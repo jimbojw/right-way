@@ -1,0 +1,13 @@
+'use strict';
+const rdfParser = require('../lib/rdf-parser.js');
+
+exports.testRDFParser = function(test) {
+  
+  rdfParser(__dirname + '/pg132.rdf', function(err, book) {
+    test.expect(2);
+    test.ifError(err);
+    test.deepEqual(book, require('./pg132.json'), "book should match expected");
+    test.done();
+  });
+  
+};
